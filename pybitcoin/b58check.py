@@ -28,7 +28,7 @@ def b58check_encode(bin_s, version_byte=0):
     # convert from b2 to b16
     hex_s = hexlify(bin_s)
     # convert from b16 to b58
-    b58_s = change_charset(hex_s, HEX_KEYSPACE, B58_KEYSPACE)
+    b58_s = change_charset(hex_s.decode(), HEX_KEYSPACE, B58_KEYSPACE)
 
     return B58_KEYSPACE[0] * num_leading_zeros + b58_s
 
