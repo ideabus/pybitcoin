@@ -186,7 +186,7 @@ def get_receiver_address(server):
 
     if info['ismine'] is not True:
         msg = "something went wrong"
-        print msg
+        print(msg)
         reply['error'] = msg
     else:
         reply['address'] = address
@@ -205,7 +205,7 @@ def check_if_needs_reload(server, min_balance=MIN_BALANCE):
     balance = float(info['balance'])
 
     if balance < min_balance:
-        print "%s needs reloading" % server
+        print("%s needs reloading" % server)
         return True
 
 
@@ -218,7 +218,7 @@ def send_payment(server, payments):
 
     namecoind.unlock_wallet(NAMECOIND_WALLET_PASSPHRASE)
     for payment in payments:
-        print namecoind.sendtoaddress(payment['address'], payment['amount'])
+        print(namecoind.sendtoaddress(payment['address'], payment['amount']))
 
 
 # -----------------------------------
