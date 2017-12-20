@@ -22,7 +22,7 @@ def b58check_encode(bin_s, version_byte=0):
     # append the version byte to the beginning
     bin_s = chr(int(version_byte)).encode('utf-8') + bin_s
     # calculate the number of leading zeros
-    num_leading_zeros = len(re.match(r'^\x00*', bin_s.decode()).group(0))
+    num_leading_zeros = len(re.match(r'^\x00*', bin_s.decode('ascii')).group(0))
     # add in the checksum add the end
     bin_s = bin_s + bin_checksum(bin_s)
     # convert from b2 to b16
