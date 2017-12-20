@@ -146,7 +146,7 @@ def rebroadcast_tx(server, raw_tx):
 
     namecoind = NamecoindClient(server)
 
-    print namecoind.sendrawtransaction(raw_tx)
+    print(namecoind.sendrawtransaction(raw_tx))
 
 
 # -----------------------------------
