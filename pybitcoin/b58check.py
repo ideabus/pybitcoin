@@ -20,7 +20,7 @@ B58_KEYSPACE = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"
 def b58check_encode(bin_s, version_byte=0):
     """ Takes in a binary string and converts it to a base 58 check string. """
     # append the version byte to the beginning
-    bin_s = chr(int(version_byte)) + bin_s
+    bin_s = bytes(chr(int(version_byte)), 'ascii') + bin_s
     # calculate the number of leading zeros
     num_leading_zeros = len(re.match(r'^\x00*', bin_s).group(0))
     # add in the checksum add the end
@@ -46,7 +46,7 @@ def b58check_unpack(b58_s):
     # convert from b16 to b2
     bin_s = unhexlify(hex_s)
     # add in the leading zeros
-    bin_s = '\x00' * num_leading_zeros + bin_s
+    bin_s = b'\x00' * num_leading_zeros + bin_s
     # make sure the newly calculated checksum equals the embedded checksum
     newly_calculated_checksum = bin_checksum(bin_s[:-4])
     embedded_checksum = bin_s[-4:]
